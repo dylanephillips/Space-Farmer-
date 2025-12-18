@@ -47,4 +47,5 @@
  This project is open-source and available under the [MIT License](LICENSE).
 ​
  ---
- *Created by Dylan Phillips for COMP486 Assignment 3.*
+ *Created by Dylan Phillips
+ *
