@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  * Program: activity_upgrade.xml
+  * Description: Defines the layout for the "Farm Store" screen, where players can spend score
+  *              on permanent upgrades for their character.
+  * Called By: UpgradeActivity.java
+  * Will Call: Android framework rendering engine.
+ -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background"
+    android:padding="16dp">
+
+    <!--
+      * Element: storeTitle
+      * Description: The main header for the store screen.
+      * Objective: To clearly label the purpose of the screen.
+     -->
+    <TextView
+        android:id="@+id/storeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Farm Store"
+        android:textSize="34sp"
+        android:textColor="@android:color/holo_orange_light"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
+
+    <!--
+      * Element: scoreDisplay
+      * Description: Displays the player's total accumulated score, which is used as currency.
+      * Objective: To inform the player of their available budget for upgrades.
+     -->
+    <TextView
+        android:id="@+id/scoreDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/storeTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Score: 12345"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"/>
+
+    <!--
+      * Element: upgradeHealthBtn
+      * Description: The button to purchase a permanent health upgrade.
+      * Objective: To provide a clear, clickable target for the health upgrade action.
+     -->
+    <Button
+        android:id="@+id/upgradeHealthBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scoreDisplay"
+        android:layout_marginTop="40dp"
+        android:text="Upgrade Health"/>
+
+    <!--
+      * Element: healthInfo
+      * Description: A text view showing the current level and cost of the health upgrade.
+      * Objective: To inform the player about the status and cost of the health upgrade.
+     -->
+    <TextView
+        android:id="@+id/healthInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/upgradeHealthBtn"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF"
+        android:text="Current: +0 | Cost: 100"/>
+
+    <!--
+      * Element: upgradeShovelBtn
+      * Description: The button to purchase a permanent shovel count upgrade.
+      * Objective: To provide a clear, clickable target for the shovel upgrade action.
+     -->
+    <Button
+        android:id="@+id/upgradeShovelBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/healthInfo"
+        android:layout_marginTop="30dp"
+        android:text="Upgrade Shovels"/>
+
+    <!--
+     * Element: shovelInfo
+     * Description: A text view showing the current level and cost of the shovel upgrade.
+     * Objective: To inform the player about the status and cost of the shovel upgrade.
+    -->
+    <TextView
+        android:id="@+id/shovelInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/upgradeShovelBtn"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF"
+        android:text="Current: +0 | Cost: 100"/>
+
+    <!--
+      * Element: upgradeSpeedBtn
+      * Description: The button to purchase a permanent movement speed upgrade.
+      * Objective: To provide a clear, clickable target for the speed upgrade action.
+     -->
+    <Button
+        android:id="@+id/upgradeSpeedBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shovelInfo"
+        android:layout_marginTop="30dp"
+        android:text="Upgrade Speed"/>
+
+    <!--
+      * Element: speedInfo
+      * Description: A text view showing the current level and cost of the speed upgrade.
+      * Objective: To inform the player about the status and cost of the speed upgrade.
+     -->
+    <TextView
+        android:id="@+id/speedInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/upgradeSpeedBtn"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFF"
+        android:text="Current: +0 | Cost: 100"/>
+
+    <!--
+      * Element: continueBtn
+      * Description: The button to exit the store and proceed to the next level.
+      * Objective: To provide the primary navigation path forward from the store.
+     -->
+    <Button
+        android:id="@+id/continueBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="Continue Mission"/>
+
+</RelativeLayout>

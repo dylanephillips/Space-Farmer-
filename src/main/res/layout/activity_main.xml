@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Program: activity_main.xml
+ * Description: Defines the core layout for the Space Farmer game screen. It is a RelativeLayout
+ * that manages the background, the Heads-Up Display (HUD) for score and health, the player
+ * character (farmer), the game's start overlay, the play area divider, and the control
+ * panel (D-Pad and Throw button) fixed at the bottom.
+ * Expected Inputs: None
+ * Expected Outputs/Results: A complete, structured game interface for real-time play.
+ * Called By: MainActivity.java
+ * Will Call: Android framework rendering engine.
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background">
+
+    <!--
+       * Element: backgroundImage
+       * Description: A full-screen ImageView that serves as the backdrop for the level.
+       * Objective: To provide an immersive, level-specific visual theme. Its source is set dynamically.
+      -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/planet_background" />
+
+    <!--
+       * Element: scoreText
+       * Description: Displays the player's current score and shovel count in the top-left corner.
+       * Objective: To provide continuous feedback on player performance and available resources.
+      -->
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toStartOf="@id/healthText"
+        android:background="@drawable/hud_background"
+        android:padding="8dp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
+        android:text="@string/score"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!--
+      * Element: healthText
+      * Description: Displays the player's remaining health in the top-right corner.
+      * Objective: To provide critical feedback on player survivability.
+     -->
+    <TextView
+        android:id="@+id/healthText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/hud_background"
+        android:padding="8dp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
+        android:text="@string/health"
+        android:textColor="#FF6666"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!--
+       * Element: bossHealthLayout
+       * Description: A container for the boss's health bar UI, which is hidden by default.
+       * Objective: To display the boss's health status only during the final boss encounter.
+      -->
+    <RelativeLayout
+        android:id="@+id/bossHealthLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:visibility="gone">
+
+        <!--
+          * Element: bossHealthText
+          * Description: The text label "BOSS HEALTH" displayed above the health bar.
+          * Objective: To clearly identify the purpose of the health bar UI element.
+         -->
+        <TextView
+            android:id="@+id/bossHealthText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/boss_health"
+            android:textColor="#FF0000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true" />
+
+        <!--
+          * Element: bossHealthBarContainer
+          * Description: The semi-transparent background or "track" for the boss health bar.
+          * Objective: To provide a visual container that shows the maximum possible health.
+         -->
+        <View
+            android:id="@+id/bossHealthBarContainer"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_below="@id/bossHealthText"
+            android:layout_marginTop="8dp"
+            android:background="#33FFFFFF" />
+
+        <!--
+          * Element: bossHealthBar
+          * Description: The red "fill" of the health bar, representing the boss's current health.
+          * Objective: To visually represent the boss's remaining health. Its width is dynamically
+          *            changed in MainActivity.java to decrease as the boss takes damage.
+         -->
+        <View
+            android:id="@+id/bossHealthBar"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_alignTop="@id/bossHealthBarContainer"
+            android:layout_alignStart="@id/bossHealthBarContainer"
+            android:background="#FF0000" />
+    </RelativeLayout>
+
+    <!--
+      * Element: playAreaDivider
+      * Description: A visual line that separates the game world from the bottom control panel.
+      * Objective: To define the lower boundary of the playable area for the farmer.
+     -->
+    <View
+        android:id="@+id/playAreaDivider"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_above="@id/controlLayout"
+        android:background="#20232A"
+        android:alpha="0.9" />
+
+    <!--
+      * Element: farmer
+      * Description: The TextView representing the player's character, using an emoji for the visual.
+      * Objective: The primary game object controlled by the user.
+     -->
+    <TextView
+        android:id="@+id/farmer"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="@string/farmer"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/playAreaDivider"
+        android:layout_marginBottom="40dp" />
+
+    <!--
+     * Element: startButton
+     * Description: A temporary button overlay used to explicitly begin the level after loading.
+     * Objective: Hold the game state until the player is ready to start. Initially centered.
+    -->
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_mission"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@android:color/transparent"
+        android:layout_centerInParent="true"
+        android:padding="8dp"
+        android:foregroundTint="@null"
+        android:backgroundTint="@null"
+        android:elevation="0dp" />
+
+    <!--
+     * Element: controlLayout
+     * Description: A dedicated RelativeLayout anchored to the bottom of the screen to hold all action controls.
+     * Objective: Provide stable, accessible input elements for D-Pad movement and action.
+    -->
+    <RelativeLayout
+        android:id="@+id/controlLayout"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:background="#10121A"
+        android:alpha="0.95"
+        android:padding="16dp">
+
+        <!--
+         * Element: dpadLayout
+         * Description: Container for the four directional movement buttons (up, down, left, right).
+         * Objective: Group the movement controls on the left side of the control area.
+        -->
+        <RelativeLayout
+            android:id="@+id/dpadLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="32dp">
+
+            <!-- Up -->
+            <ImageButton
+                android:id="@+id/upBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/round_button_bg"
+                android:src="@android:drawable/arrow_up_float"
+                android:contentDescription="@string/move_up" />
+
+            <!-- Down -->
+            <ImageButton
+                android:id="@+id/downBtn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/upBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/round_button_bg"
+                android:src="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/move_down" />
+
+            <!-- Left -->
+            <ImageButton
+                android:id="@+id/leftBtn"
+                android:layout_width="110dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/upBtn"
+                android:layout_marginEnd="7dp"
+                android:background="@drawable/round_button_bg"
+                android:src="@android:drawable/arrow_down_float"
+                android:rotation="90"
+                android:contentDescription="@string/move_left" />
+
+            <!-- Right -->
+            <ImageButton
+                android:id="@+id/rightBtn"
+                android:layout_width="110dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/upBtn"
+                android:layout_marginStart="7dp"
+                android:background="@drawable/round_button_bg"
+                android:src="@android:drawable/arrow_down_float"
+                android:rotation="-90"
+                android:contentDescription="@string/move_right" />
+        </RelativeLayout>
+
+        <!--
+         * Element: throwBtn
+         * Description: The action button used to fire the farmer's projectile (the shovel).
+         * Objective: Provide the primary offensive/defensive interaction point for the player.
+        -->
+        <ImageButton
+            android:id="@+id/throwBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/round_button_highlight"
+            android:src="@android:drawable/ic_menu_send"
+            android:contentDescription="@string/throw_shovel" />
+    </RelativeLayout>
+
+    <!--
+     * Element: tutorialOverlayText
+     * Description: A dark overlay TextView used to display instructional text during the tutorial mode.
+     * Objective: Present step-by-step guidance to the user, covering the entire screen width.
+    -->
+    <TextView
+        android:id="@+id/tutorialOverlayText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:padding="20dp"
+        android:background="#DD000000"
+        android:text="@string/tutorial_text_here"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <!--
+     * Element: tutorialNextButton
+     * Description: Button used to advance from one step to the next in the tutorial flow.
+     * Objective: Allow the user to manually control the pacing of the tutorial.
+    -->
+    <Button
+        android:id="@+id/tutorialNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tutorialOverlayText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/next"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:backgroundTint="#00BFFF"
+        android:textColor="#FFFFFF"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

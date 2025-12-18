@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Program: activity_planet_select.xml
+ * Description: Defines the layout for the planet selection screen. It displays buttons for each *              planet that, when clicked, navigate the user to a dedicated level selection screen.
+ *              It also displays lock icons over planets that are not yet accessible.
+ * Called By: PlanetSelectActivity.java
+ * Will Call: Android framework rendering engine.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/planetLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background"
+    android:padding="20dp">
+
+    <!--
+    * Element: title
+    * Description: The header text for the screen.
+    * Objective: To instruct the user to select a planet.
+   -->
+    <TextView
+        android:id="@+id/title"
+        android:text="Select Your Planet"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" />
+
+    <!--
+     * Element: greenPlanetBtn
+     * Description: Image button for the Green Planet. Always unlocked.
+     * Objective: To navigate to the level selection screen for Green Planet levels (1-5).
+    -->
+    <ImageButton
+        android:id="@+id/greenPlanetBtn"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/planet_button_effect"
+        android:src="@drawable/green_planet"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="Green Planet" />
+
+    <!--
+     * Element: purplePlanetBtn
+     * Description: Image button for the Purple Planet.
+     * Objective: To navigate to the level selection screen for Purple Planet levels (6-10).
+    -->
+    <ImageButton
+        android:id="@+id/purplePlanetBtn"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/greenPlanetBtn"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/planet_button_effect"
+        android:src="@drawable/purple_planet"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="Purple Planet" />
+
+    <!--
+     * Element: purplePlanetLock
+     * Description: A lock icon displayed on top of the Purple Planet button.
+     * Objective: To visually indicate to the player that this planet is not yet unlocked.
+     *            Its visibility is controlled by PlanetSelectActivity.java.
+    -->
+    <ImageView
+        android:id="@+id/purplePlanetLock"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@android:drawable/ic_lock_lock"
+        android:layout_alignTop="@id/purplePlanetBtn"
+        android:layout_alignStart="@id/purplePlanetBtn"
+        android:layout_alignEnd="@id/purplePlanetBtn"
+        android:layout_alignBottom="@id/purplePlanetBtn"
+        android:background="#80000000"
+        android:padding="20dp"/>
+
+
+    <!--
+     * Element: icePlanetBtn
+     * Description: Image button for the Ice Planet.
+     * Objective: To navigate to the level selection screen for Ice Planet levels (11-15).
+    -->
+    <ImageButton
+        android:id="@+id/icePlanetBtn"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/purplePlanetBtn"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/planet_button_effect"
+        android:src="@drawable/ice_planet"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:contentDescription="Ice Planet" />
+
+    <!--
+     * Element: icePlanetLock
+     * Description: A lock icon displayed on top of the Ice Planet button.
+     * Objective: To visually indicate that this planet is not yet unlocked.
+     *            Its visibility is controlled by PlanetSelectActivity.java.
+    -->
+    <ImageView
+        android:id="@+id/icePlanetLock"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@android:drawable/ic_lock_lock"
+        android:layout_alignTop="@id/icePlanetBtn"
+        android:layout_alignStart="@id/icePlanetBtn"
+        android:layout_alignEnd="@id/icePlanetBtn"
+        android:layout_alignBottom="@id/icePlanetBtn"
+        android:background="#80000000"
+        android:padding="20dp"/>
+
+    <!--
+     * Element: backButton
+     * Description: A button for returning to the main menu.
+     * Objective: To provide a clear navigation path back to the StartActivity.
+    -->
+    <Button
+        android:id="@+id/backButton"
+        android:text="Back"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

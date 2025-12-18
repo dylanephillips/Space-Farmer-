@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Program: activity_ending.xml
+ * Description: Defines the layout for the final game completion screen, shown after defeating the boss.
+ *              It displays a congratulatory message and a button to return to the planet selection menu.
+ * Called By: EndingActivity.java
+ * Will Call: Android framework rendering engine.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background"
+    android:padding="30dp">
+    <!--
+    * Element: congratsTitle
+    * Description: The main "CONGRATULATIONS!" header text.
+    * Objective: To provide a clear, celebratory title for the ending screen.
+   -->
+    <TextView
+        android:id="@+id/congratsTitle"
+        android:text="CONGRATULATIONS!"
+        android:textColor="#FFD700"
+        android:textStyle="bold"
+        android:textSize="34sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--
+     * Element: congratsMessage
+     * Description: A sub-heading with a message congratulating the player on completing the game.
+     * Objective: To give context to the victory and make the player feel accomplished.
+    -->
+    <TextView
+        android:id="@+id/congratsMessage"
+        android:text="You have defeated the final boss and brought peace to the galaxy!"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        android:gravity="center"
+        android:layout_below="@id/congratsTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--
+     * Element: returnToPlanetsBtn
+     * Description: The primary navigation button on this screen.
+     * Objective: To allow the player to return to the planet selection menu to continue playing.
+    -->
+    <Button
+        android:id="@+id/returnToPlanetsBtn"
+        android:text="Return to Planet Select"
+        android:textColor="@android:color/black"
+        android:backgroundTint="#FFFFFFFF"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:padding="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

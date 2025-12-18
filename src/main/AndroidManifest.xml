@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Program: AndroidManifest.xml
+    Description: This file is the core configuration document for the "Space Farmer" Android application.
+    It declares essential application components, sets global application properties,
+    and defines the entry point and lifecycle of the application.
+
+    Expected Inputs: None (static configuration file).
+    Expected Outputs/Results: The Android Operating System registers all defined activities
+    and their intent filters, to make sure proper application setup and navigation.
+
+    Called By: Android OS (at installation and runtime), Android Build Tools (Gradle).
+    Will Call: None (static declaration).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        Application Block: Defines global, device-level properties for the entire application.
+        This includes backup rules, icon, label, and the application theme.
+    -->
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SpaceFarmer"
+        tools:targetApi="31">
+
+        <!--
+            Activity: .StartActivity
+            Description: The initial entry point and main menu of the application.
+            This activity handles the first user interaction (Start Game, Tutorial).
+            The <intent-filter> ensures this is the primary activity launched when the user
+            taps the app icon.
+            Exported: true (Required for LAUNCHER category)
+        -->
+        <activity
+            android:name=".StartActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+            Activity: .PlanetSelectActivity
+            Description: The screen where the user chooses a level or game mode (e.g., tutorial mode).
+            Exported: false (Only launched internally by the app, not by other apps or services)
+        -->
+        <activity
+            android:name=".PlanetSelectActivity"
+            android:exported="false" />
+
+        <!--
+            Activity: .MainActivity
+            Description: The core gameplay loop and game engine activity.
+            It handles real-time simulation, entity movement, collisions, and score management.
+            Exported: false (Only launched internally by the app)
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <!--
+            Activity: .NextLevelActivity
+            Description: An interstitial screen displayed after a player successfully completes a level.
+            It typically shows a victory message and offers a prompt to continue to the next level.
+            Exported: false (Only launched internally by the app)
+        -->
+        <activity
+            android:name=".NextLevelActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".UpgradeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".LevelSelectActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".EndingActivity"
+            android:exported="false" />
+
+        <!--
+            Activity: .GameOverActivity
+            Description: The dedicated screen displayed when the player's health reaches zero,
+            showing the options to continue or quit.
+            Exported: false (Only launched internally by the app)
+        -->
+        <activity
+            android:name=".GameOverActivity"
+            android:exported="false" />
+    </application>
+</manifest>

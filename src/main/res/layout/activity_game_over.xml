@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Program: activity_game_over.xml
+ * Description: Defines the layout for the game over screen. It displays a "GAME OVER" message
+ *              and provides the user with options to either retry the level or return to the main menu.
+ * Called By: GameOverActivity.java
+ * Will Call: Android framework rendering engine.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background"
+    android:gravity="center">
+
+    <!--
+     * Element: gameOverTitle
+     * Description: Displays the main "GAME OVER" message to the user.
+     * Objective: To provide clear visual feedback that the game session has ended in failure.
+    -->
+    <TextView
+        android:id="@+id/gameOverTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GAME OVER"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
+
+    <!--
+     * Element: retryButton
+     * Description: Button to restart the failed level.
+     * Objective: To allow the user to immediately try the level again.
+    -->
+    <Button
+        android:id="@+id/retryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retry Level"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/black"
+        android:textSize="18sp"
+        android:layout_below="@id/gameOverTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+
+    <!--
+     * Element: mainMenuButton
+     * Description: Button to navigate the user back to the main menu.
+     * Objective: To provide an exit path from the game screen back to the main navigation.
+    -->
+    <Button
+        android:id="@+id/mainMenuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main Menu"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/black"
+        android:textSize="18sp"
+        android:layout_below="@id/retryButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>

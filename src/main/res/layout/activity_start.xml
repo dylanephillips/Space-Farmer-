@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Program: activity_start.xml
+ * Description: Defines the layout for the main menu screen of the Space Farmer game. It uses a
+ *              RelativeLayout to center a title and a vertical LinearLayout of buttons.
+ * Called By: StartActivity.java
+ * Will Call: Android framework rendering engine.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background"
+    android:gravity="center">
+
+
+    <!--
+    * Element: titleText
+    * Description: Displays the main title of the game with a semi-transparent background to improve readability.
+    * Objective: Provide prominent branding and a visual anchor for the menu.
+   -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:background="#80000000"
+        android:fontFamily="sans-serif-black"
+        android:paddingLeft="24dp"
+        android:paddingTop="12dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="12dp"
+        android:text="🌾 SPACE FARMER 🌾"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <!--
+     * Element: (LinearLayout)
+     * Description: A container that organizes the main navigation buttons vertically.
+     * Objective: To group all primary user actions in a clean, organized block at the bottom of the screen.
+    -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!--
+             * Element: startGameBtn
+             * Description: The primary call-to-action button to begin the game.
+             * Objective: To navigate the user to the planet selection screen.
+            -->
+        <Button
+            android:id="@+id/startGameBtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFC107"
+            android:text="Start Mission"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <!--
+         * Element: tutorialBtn
+         * Description: Button to launch the in-game tutorial.
+         * Objective: To provide an entry point for new users to learn the game mechanics.
+        -->
+        <Button
+            android:id="@+id/tutorialBtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="Tutorial"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <!--
+         * Element: resetBtn
+         * Description: A smaller button to reset all saved game progress.
+         * Objective: To allow the player to start over from scratch.
+        -->
+        <Button
+            android:id="@+id/resetBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#40FFFFFF"
+            android:text="Reset Progress"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+</RelativeLayout>

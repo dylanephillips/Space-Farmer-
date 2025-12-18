@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Program: activity_level_select.xml
+ * Description: Defines the layout for the per-planet level selection screen. It displays a title
+ *              and a GridLayout that is dynamically populated with level buttons by LevelSelectActivity.java.
+ * Called By: LevelSelectActivity.java
+ * Will Call: Android framework rendering engine.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background"
+    android:padding="16dp">
+
+    <!--
+     * Element: planetTitle
+     * Description: The main title for the screen, indicating which planet's levels are being shown.
+     * Objective: To provide clear context for the player.
+    -->
+    <TextView
+        android:id="@+id/planetTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Green Planet"
+        android:textSize="32sp"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
+
+    <!--
+     * Element: levelGrid
+     * Description: A container that holds the dynamically created level buttons.
+     * Objective: To display a grid of levels (e.g., 1-5) for the selected planet. The buttons
+     *            are created and added programmatically in LevelSelectActivity.java.
+    -->
+    <GridLayout
+        android:id="@+id/levelGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/planetTitle"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:columnCount="5"
+        android:rowCount="3"
+        android:orientation="horizontal" />
+
+    <!--
+     * Element: backToPlanetSelectBtn
+     * Description: A navigation button to return to the main planet selection screen.
+     * Objective: To allow the user to go back to the previous menu.
+    -->
+    <Button
+        android:id="@+id/backToPlanetSelectBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Back to Planets"
+        android:backgroundTint="#80FFFFFF"
+        android:textColor="@android:color/white"/>
+
+</RelativeLayout>

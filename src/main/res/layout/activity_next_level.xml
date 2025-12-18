@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Program: activity_next_level.xml
+ * Description: Defines the layout for the level completion screen. It displays a victory message
+ *              and provides the user with three navigation options: Continue to the next level,
+ *              visit the store, or return to the main menu.
+ * Called By: NextLevelActivity.java
+ * Will Call: Android framework rendering engine.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background"
+    android:padding="30dp">
+
+    <!--
+     * Element: victoryText
+     * Description: Displays the main "LEVEL COMPLETE!" message. The planet number is set programmatically.
+     * Objective: To give the player clear and celebratory feedback on their success.
+    -->
+    <TextView
+        android:id="@+id/victoryText"
+        android:text="LEVEL COMPLETE!"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--
+     * Element: continueButton
+     * Description: A button to proceed directly to the next level.
+     * Objective: To provide the primary call-to-action for players who want to continue playing immediately.
+    -->
+    <Button
+        android:id="@+id/continueButton"
+        android:text="Continue"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/black"
+        android:textSize="20sp"
+        android:layout_below="@id/victoryText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--
+     * Element: storeButton
+     * Description: A button to navigate to the permanent upgrade store.
+     * Objective: To allow the player to spend their earned score on upgrades before the next level.
+    -->
+    <Button
+        android:id="@+id/storeButton"
+        android:text="Visit Farm Store"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/black"
+        android:textSize="20sp"
+        android:layout_below="@id/continueButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--
+     * Element: mainMenuButton
+     * Description: A button to return to the main menu (StartActivity).
+     * Objective: To provide an exit path for players who wish to stop playing or select a different planet.
+    -->
+    <Button
+        android:id="@+id/mainMenuButton"
+        android:text="Main Menu"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/black"
+        android:textSize="20sp"
+        android:layout_below="@id/storeButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

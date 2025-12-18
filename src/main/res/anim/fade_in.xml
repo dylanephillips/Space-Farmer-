@@ -1,0 +1,13 @@
+<!--
+ * Program: fade_in.xml
+ * Description: Defines a simple alpha animation to smoothly fade a View from fully transparent (0.0)
+ * to fully opaque (1.0).
+ * Expected Inputs: None
+ * Expected Outputs/Results: A smooth visual effect where a target View becomes visible over 500ms.
+ * Called By: Android's Animation API via R.anim.fade_in, usually triggered by Activity/Fragment transitions or View updates.
+ * Will Call: Android framework animation engine.
+-->
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:interpolator="@android:anim/accelerate_interpolator"
+    android:fromAlpha="0.0" android:toAlpha="1.0"
+    android:duration="500"/>
